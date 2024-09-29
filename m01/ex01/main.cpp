@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 13:14:07 by ibaby             #+#    #+#             */
-/*   Updated: 2024/09/29 13:41:44 by ibaby            ###   ########.fr       */
+/*   Created: 2024/09/29 22:55:32 by ibaby             #+#    #+#             */
+/*   Updated: 2024/09/29 23:33:06 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
+#include "Zombie.hpp"
 
-void	str_to_upper(char *str) {
-	for (int i = 0; str[i] != '\0'; i++) {
-		if (str[i] >= 'a' && str[i] <= 'z') {
-			str[i] -= 32;
-		}
+int main() {
+	Zombie *z = zombieHorde(3, "jean");
+	for (int i = 0; i < 3; i++) {
+		z[i].announce();
 	}
+	delete[] z;
 }
-
-int main(int ac, char **av) {
-	if (ac == 1) {
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-
-	for (int i = 1; i < ac; i++) {
-		str_to_upper(av[i]);
-		std::cout << av[i];
-	}
-	std::cout << std::endl;
-	return (0);
-}
-

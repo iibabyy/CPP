@@ -13,9 +13,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = test
+NAME = pointers
 
-SRCS = Account.cpp tests.cpp
+SRCS = main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

@@ -34,7 +34,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo ""
-	@echo "$(GREEN)Megaphone Compiled !$(END)"
+	@echo "$(GREEN)$(NAME) Compiled !$(END)"
 %.o : %.cpp
 	@$(CC) $(FLAGS) -c $< -o $@
 	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES)+1))))

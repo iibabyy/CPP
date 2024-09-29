@@ -11,11 +11,11 @@ END= 	$(shell tput -Txterm sgr0)
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = megaphone
+NAME = brainz
 
-SRCS = phonebook.cpp main.cpp contact.cpp
+SRCS = Zombie.cpp zombieHorde.cpp main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
@@ -34,7 +34,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo ""
-	@echo "$(GREEN)Megaphone Compiled !$(END)"
+	@echo "$(GREEN)$(NAME) Compiled !$(END)"
 %.o : %.cpp
 	@$(CC) $(FLAGS) -c $< -o $@
 	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES)+1))))

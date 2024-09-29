@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/09/29 18:33:18 by ibaby            ###   ########.fr       */
+/*   Created: 2024/09/29 22:55:32 by ibaby             #+#    #+#             */
+/*   Updated: 2024/09/29 23:44:38 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-
 #include <string>
 #include <iostream>
-#include <cstdlib>
 
-#include "contact.hpp"
+int main() {
+	std::string _1 = "HI THIS IS BRAIN";
+	std::string *_2 = &_1;
+	std::string &_3 = _1;
 
-struct PhoneBook {
-	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
-};
-
-#endif
+	std::cout
+	<< "_1 address:       " << &_1 << std::endl
+	<< "_2 value:         " << _2 << std::endl
+	<< "_3 value:         " << &_3 << std::endl
+	<< "_________________________________" << std::endl
+	<< "_1 value:         " << _1 << std::endl
+	<< "_3 value pointed: " << *_2 << std::endl
+	<< "_3 value pointed: " << _3 << std::endl;
+}
