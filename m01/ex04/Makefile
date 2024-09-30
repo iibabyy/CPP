@@ -13,9 +13,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = pointers
+NAME = replace
 
-SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRCS = main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
@@ -50,6 +50,7 @@ $(NAME) : $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
+	@rm *.replace
 
 fclean: clean
 	@rm -f $(NAME)

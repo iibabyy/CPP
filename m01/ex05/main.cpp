@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 23:48:07 by ibaby             #+#    #+#             */
-/*   Updated: 2024/09/30 18:20:09 by ibaby            ###   ########.fr       */
+/*   Created: 2024/09/30 21:19:47 by ibaby             #+#    #+#             */
+/*   Updated: 2024/09/30 21:26:58 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
+#include "Harl.hpp"
 
-#include <string>
+int main() {
+	Harl test;
 
-class Weapon {
-	public:
-		std::string &getType( void );
-		void		setType( std::string new_type );
-		Weapon( std::string type );
-		~Weapon();
-	private:
-		std::string type;
-};
-
-#endif
+	std::cout << "DEBUG:" << std::endl;
+	test.complain("DEBUG");
+	std::cout << "INFO:" << std::endl;
+	test.complain("INFO");
+	std::cout << "WARNING:" << std::endl;
+	test.complain("WARNING");
+	std::cout << "ERROR:" << std::endl;
+	test.complain("ERROR");
+}
