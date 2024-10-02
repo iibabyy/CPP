@@ -26,12 +26,32 @@ class Fixed {
 		Fixed( int num );
 		Fixed( float num );
 		~Fixed();
-		Fixed& operator=( const Fixed& other );
 
-		int	getRawBits( void ) const;
-		float	toFloat( void ) const;
-		int	toInt( void ) const;
+		Fixed&	operator=( const Fixed& other );
+		Fixed	operator++( int );
+		Fixed&	operator++();
+		Fixed	operator--( int );
+		Fixed&	operator--();
+		Fixed	operator+( const Fixed& other );
+		Fixed	operator-( const Fixed& other );
+		Fixed	operator*( const Fixed& other );
+		Fixed	operator/( const Fixed& other );
+		bool	operator>( const Fixed& other );
+		bool	operator<( const Fixed& other );
+		bool	operator<=( const Fixed& other );
+		bool	operator>=( const Fixed& other );
+		bool	operator==( const Fixed& other );
+		bool	operator!=( const Fixed& other );
+
 		void	setRawBits( int const raw );
+		int	getRawBits( void ) const;
+		int	toInt( void ) const;
+		float	toFloat( void ) const;
+
+		static Fixed& min(Fixed& a, Fixed& b);
+		static Fixed& min(const Fixed& a, const Fixed& b);
+		static Fixed& max(Fixed& a, Fixed& b);
+		static Fixed& max(const Fixed& a, const Fixed& b);
 };
 
 std::ostream &operator<<(std::ostream& os, const Fixed& var);
