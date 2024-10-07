@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
+/*   Created: 2024/10/02 23:49:46 by ibaby             #+#    #+#             */
 /*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 #include <string>
 #include <iostream>
-#include <cstdlib>
 
-#include "contact.hpp"
-
-class PhoneBook {
+class ClapTrap {
+	protected:
+		std::string name;
+		int hp;
+		int energy;
+		int damage;
 	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
+		ClapTrap();
+		~ClapTrap();
+		ClapTrap( std::string name );
+		ClapTrap( const ClapTrap& other );
+		ClapTrap& operator=( const ClapTrap& other );
+
+		virtual void attack(const std::string& target);
+		void take(unsigned int amount);
+		void beRepaired(unsigned int amount);
 };
 
 #endif

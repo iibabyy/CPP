@@ -6,13 +6,11 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:21:56 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/06 02:07:09 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/06 02:46:07 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
-// Constructors...
 
 // Constructors...
 
@@ -23,9 +21,9 @@ ClapTrap::ClapTrap() {
 	this->damage = 0;
 };
 
-ClapTrap::ClapTrap( std::string name ) {
+ClapTrap::ClapTrap( std::string _name ) {
 	std::cout << "New ClapTrap (name)" << std::endl;
-	this->name = name;
+	this->name = _name;
 	this->hp = 10;
 	this->energy = 10;
 	this->damage = 0;

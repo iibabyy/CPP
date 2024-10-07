@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/09/30 21:19:47 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/06 02:03:10 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
+int main( void ) {
+	ClapTrap idrissa ("Idrissa");
+	ScavTrap moha ("Moha");
 
-#include "contact.hpp"
-
-class PhoneBook {
-	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
-};
-
-#endif
+	idrissa.attack("Moha");
+	moha.guardGate();
+	moha.take(0);
+	moha.beRepaired(0);
+	moha.attack("Idrissa");
+	idrissa.take(20);
+	idrissa.beRepaired(10);
+	return 0;
+}

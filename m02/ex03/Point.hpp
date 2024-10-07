@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:49:46 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/03 00:26:01 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "Fixed.hpp"
 
-struct Point {
+class Point {
 	private:
 		Fixed x;
 		Fixed y;

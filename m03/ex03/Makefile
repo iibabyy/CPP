@@ -11,11 +11,11 @@ END= 	$(shell tput -Txterm sgr0)
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
+FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
 
-NAME = ClapTrap
+NAME = FragTrap
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

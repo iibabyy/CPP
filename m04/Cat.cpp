@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/07 23:17:08 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Cat.hpp"
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
+Cat::Cat(): Animal() {
+	this->type = "Cat";
+}
 
-#include "contact.hpp"
+Cat::~Cat() {
+}
 
-class PhoneBook {
-	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
-};
+Cat::Cat( const Cat& other ): Animal(other) {
+	this->type = "Cat";
+}
 
-#endif
+Cat&	Cat::operator=( const Cat& other ) {
+	*this = other;
+	return (*this);
+}
+
+void	Cat::makeSound( void ) {
+	std::cout << "Miaou Miaou" << std::endl;
+}

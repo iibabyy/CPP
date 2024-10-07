@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:11:53 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/07 23:15:56 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ANIMAL_H
+# define ANIMAL_H
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
+# include <string>
 
-#include "contact.hpp"
-
-class PhoneBook {
+class Animal {
+	protected:
+		std::string	type;
 	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
+		Animal();
+		~Animal();
+		Animal( const Animal& other );
+		
+		Animal&	operator=( const Animal& other );
+		virtual void	makeSound( void );
+		std::string	getType( void ) const;
 };
 
 #endif

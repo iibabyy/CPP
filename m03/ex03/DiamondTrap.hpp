@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:49:46 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/06 02:53:48 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <string>
 #include <iostream>
 
-class ClapTrap {
+class DiamondTrap :
+public ScavTrap,
+public FragTrap {
 	private:
 		std::string name;
-		int hp;
-		int energy;
-		int damage;
 	public:
-		ClapTrap();
-		~ClapTrap();
-		ClapTrap( std::string name );
-		ClapTrap( const ClapTrap& other );
-		ClapTrap& operator=( const ClapTrap& other );
+		DiamondTrap();
+		~DiamondTrap();
+		DiamondTrap( std::string name );
+		DiamondTrap( const DiamondTrap& other );
 
-		void attack(const std::string& target);
-		void take(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		DiamondTrap& operator=( const DiamondTrap& other );
+		using ScavTrap::attack;
+		using ScavTrap::guardGate;
+		using FragTrap::highFivesGuys;
+		void	whoAmI( void );
 };
 
 #endif

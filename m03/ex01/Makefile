@@ -13,9 +13,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = ClapTrap
+NAME = ScavTrap
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

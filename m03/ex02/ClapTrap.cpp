@@ -6,13 +6,11 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:21:56 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/06 02:07:09 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/06 02:06:55 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
-// Constructors...
 
 // Constructors...
 

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:11:11 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/07 17:29:53 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef DOG_H
+# define DOG_H
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
+# include "Animal.hpp"
+# include <iostream>
 
-#include "contact.hpp"
-
-class PhoneBook {
+class Dog:
+public Animal {
 	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
+		void	makeSound( void );
 };
 
 #endif

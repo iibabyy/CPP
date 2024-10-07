@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/07 17:32:26 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Dog.hpp"
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
+Dog::Dog(): Animal() {
+	this->type = "Dog";
+}
 
-#include "contact.hpp"
+Dog::~Dog() {
+}
 
-class PhoneBook {
-	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
-};
+Dog::Dog( const Dog& other ): Animal(other) {
+	this->type = "Dog";
+}
 
-#endif
+Dog&	Dog::operator=( const Dog& other ) {
+	*this = other;
+	return (*this);
+}
+
+void	Dog::makeSound( void ) {
+	std::cout << "Wouaf Wouaf" << std::endl;
+}

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 15:12:50 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:13:04 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/07 23:15:21 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Animal.hpp"
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
 
-#include "contact.hpp"
+Animal::Animal() {
+	this->type = "";
+}
 
-class PhoneBook {
-	public:
-		void	add(int index);
-		void	search(void);
-		void	init();
-		~PhoneBook();
-		PhoneBook();
-	private:
-		void	print_repertory(void);
-		Contact	repertory[8];
-		int		contact_len;
-};
+Animal::~Animal() {
+}
 
-#endif
+Animal::Animal( const Animal& other ) {
+	this->type = other.getType();
+}
+
+Animal&	Animal::operator=( const Animal& other ) {
+	*this = other;
+	return (*this);
+}
+
+std::string	Animal::getType( void ) const {
+	return (this->type);
+}

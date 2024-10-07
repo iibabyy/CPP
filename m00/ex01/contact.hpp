@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:59:28 by ibaby             #+#    #+#             */
-/*   Updated: 2024/09/29 18:43:00 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/07 17:12:35 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include <iostream>
 
-struct	Contact
+class	Contact
 {
 	public:
 		void 	display_info(int index);
