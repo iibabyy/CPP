@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 23:17:08 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/08 00:37:56 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/09 18:03:46 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-Cat::Cat(): Animal() {
-	this->type = "Cat";
+
+Brain::Brain() {
+	std::cout << "Brain created" << std::endl;
 }
 
-Cat::~Cat() {
+Brain::~Brain() {
+	std::cout << "Brain destructed" << std::endl;
 }
 
-Cat::Cat( const Cat& other ): Animal(other) {
-	this->type = "Cat";
-}
-
-Cat&	Cat::operator=( const Cat& other ) {
+Brain::Brain( const Brain& other ) {
+	std::cout << "Brain copied" << std::endl;
 	*this = other;
-	return (*this);
 }
 
-void	Cat::makeSound( void ) {
-	std::cout << "Miaou Miaou" << std::endl;
+Brain& Brain::operator=( const Brain& other ) {
+	std::cout << "Brain copied from '='" << std::endl;
+	for (int i = 0; i < 100; i++) {
+		this->ideas[i] = other.ideas[i];
+	}
+	return (*this);
 }

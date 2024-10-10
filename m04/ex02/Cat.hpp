@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 17:32:26 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/07 17:11:11 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/08 00:41:46 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-Dog::Dog(): Animal() {
-	this->type = "Dog";
-}
+# include "Animal.hpp"
+# include "Brain.hpp"
+# include <iostream>
 
-Dog::~Dog() {
-}
+class Cat:
+public Animal {
+	private:
+		Brain	*brain;
+	public:
+		Cat();
+		~Cat();
+		Cat( const Cat& other );
+		
+		Cat&	operator=( const Cat& other );
+		void	makeSound( void ) const;
+};
 
-Dog::Dog( const Dog& other ): Animal(other) {
-	this->type = "Dog";
-}
-
-Dog&	Dog::operator=( const Dog& other ) {
-	*this = other;
-	return (*this);
-}
-
-void	Dog::makeSound( void ) {
-	std::cout << "Wouaf Wouaf" << std::endl;
-}
+#endif

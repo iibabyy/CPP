@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 23:15:21 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/09 17:46:13 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/09 18:09:15 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../includes/Ice.hpp"
 
-
-Animal::Animal() {
-	this->type = "";
+Ice::Ice(): AMateria("ice") {
 }
 
-Animal::~Animal() {
+Ice::~Ice() {
 }
 
-Animal::Animal( const Animal& other ) {
-	this->type = other.getType();
-}
-
-Animal&	Animal::operator=( const Animal& other ) {
+Ice::Ice( const Ice& other ): AMateria("ice") {
 	*this = other;
+}
+
+Ice& Ice::operator=( const Ice& other ) {
+	this->type = other.type;
 	return (*this);
 }
 
-std::string	Animal::getType( void ) const {
-	return (this->type);
+Ice* Ice::clone() const {
+	return (new Ice());
+}
+
+void Ice::use(ICharacter& target) {
+	std::cout
+	<< "* shoots an ice bolt at "
+	<< target.getName() << " *"
+	<< std::endl;
 }

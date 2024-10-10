@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:10:51 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/07 23:14:42 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/09 17:46:13 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/09 18:09:15 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "../includes/Cure.hpp"
 
-int main()
-{
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	return 0;
+Cure::Cure(): AMateria("cure") {
+}
+
+Cure::~Cure() {
+}
+
+Cure::Cure( const Cure& other ): AMateria(other.type) {
+}
+
+Cure& Cure::operator=( const Cure& other ) {
+	this->type = other.type;
+	return (*this);
+}
+
+Cure* Cure::clone() const {
+	return (new Cure());
+}
+
+void Cure::use(ICharacter& target) {
+	std::cout
+	<< "* heals "
+	<< target.getName() << "'s wounds *"
+	<< std::endl;
 }
