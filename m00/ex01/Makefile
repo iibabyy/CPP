@@ -13,7 +13,7 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = megaphone
+NAME = PhoneBook
 
 SRCS = phonebook.cpp main.cpp contact.cpp
 

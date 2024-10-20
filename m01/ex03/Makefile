@@ -13,7 +13,7 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = pointers
+NAME = war
 
 SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 

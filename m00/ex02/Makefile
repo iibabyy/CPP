@@ -13,7 +13,7 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
-NAME = test
+NAME = Account
 
 SRCS = Account.cpp tests.cpp
 

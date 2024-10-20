@@ -50,7 +50,7 @@ $(NAME) : $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@rm *.replace
+	@rm -f *.replace
 
 fclean: clean
 	@rm -f $(NAME)
