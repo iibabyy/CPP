@@ -13,9 +13,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
 
-NAME = FragTrap
+NAME = Animals
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRCS = main.cpp Dog.cpp Cat.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

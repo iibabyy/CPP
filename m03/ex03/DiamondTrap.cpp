@@ -37,7 +37,10 @@ FragTrap() {
 
 DiamondTrap& DiamondTrap::operator=( const DiamondTrap& other ) {
 	std::cout << "DiamondTrap '=' used" << std::endl;
-	*this = other;
+	this->name = other.name;
+	this->hp = other.hp;
+	this->energy = other.energy;
+	this->damage = other.damage;
 	return (*this);
 };
 

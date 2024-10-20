@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:21:56 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/06 02:07:02 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/09 17:53:07 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ ClapTrap::ClapTrap( const ClapTrap& other ) {
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& other ) {
 	std::cout << "ClapTrap '=' used" << std::endl;
-	*this = other;
+	this->name = other.name;
+	this->hp = other.hp;
+	this->energy = other.energy;
+	this->damage = other.damage;
 	return (*this);
 };
 
