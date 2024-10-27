@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:11:53 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/08 01:11:00 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 17:54:27 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class Animal {
 		std::string	type;
 	public:
 		Animal();
-		virtual ~Animal() = 0;
+		virtual ~Animal();
 		Animal( const Animal& other );
 		
 		Animal&	operator=( const Animal& other );
-		virtual void	makeSound( void ) const;
+		virtual void	makeSound( void ) const = 0;
 		std::string	getType( void ) const;
 };
 

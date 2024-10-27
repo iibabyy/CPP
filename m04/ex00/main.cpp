@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:10:51 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/20 18:45:00 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 17:54:07 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ int main()
 	meta->makeSound();
 	wrongCat->makeSound();
 	wrongAnimal->makeSound();
+	delete meta;
+	delete dog;
+	delete cat;
+	delete wrongAnimal;
+	delete wrongCat;
 	return 0;
 }

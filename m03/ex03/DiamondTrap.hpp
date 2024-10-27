@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:49:46 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/06 02:53:48 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/21 18:13:56 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public ScavTrap,
 public FragTrap {
 	private:
 		std::string name;
+
 	public:
 		DiamondTrap();
 		~DiamondTrap();

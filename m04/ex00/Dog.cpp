@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/20 18:43:01 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 11:46:31 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Dog::~Dog() {
 
 Dog::Dog( const Dog& other ): Animal(other) {
 	std::cout << "dog copied" << std::endl;
-	this->type = "Dog";
+	this->type = other.type;
 }
 
 Dog&	Dog::operator=( const Dog& other ) {

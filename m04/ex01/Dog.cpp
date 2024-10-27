@@ -6,11 +6,12 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/09 18:02:56 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 11:57:18 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 Dog::Dog(): Animal() {
 	std::cout << "dog created" << std::endl;
@@ -31,6 +32,8 @@ Dog::Dog( const Dog& other ): Animal(other) {
 Dog&	Dog::operator=( const Dog& other ) {
 	std::cout << "dog copied from '='" << std::endl;
 	this->type = other.getType();
+	delete this->brain;
+	this->brain = new Brain(*other.brain);
 	return (*this);
 }
 

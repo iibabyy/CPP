@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 20:21:56 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/02 18:15:31 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 14:49:12 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ float	Fixed::toFloat( void ) const {
 	return ((float)(this->num / std::pow(2, this->fractional_bits)));
 }
 
-std::ostream
-& operator<<(std::ostream& os, const Fixed& var) {
+std::ostream& operator<<(std::ostream& os, const Fixed& var) {
   os << var.toFloat();
   return os;
 }

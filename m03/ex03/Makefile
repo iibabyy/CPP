@@ -13,7 +13,7 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
 
-NAME = FragTrap
+NAME = DiamondTrap
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 

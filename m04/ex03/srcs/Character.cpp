@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 18:38:06 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/09 21:45:36 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/20 18:47:07 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character::Character() {
 }
 
 Character::~Character() {
-	std::cout << "delete char\n";
+	// std::cout << "delete char\n";
 	this->clear_inventory();
 	for (int i = 0; i < 1024; i++) {
 		if (this->garbage[i] != NULL)

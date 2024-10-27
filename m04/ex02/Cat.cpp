@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:16:38 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/08 00:45:13 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/26 17:55:03 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ Cat::~Cat() {
 
 Cat::Cat( const Cat& other ): Animal(other) {
 	std::cout << "cat copied" << std::endl;
+	this->brain = NULL;
 	*this = other;
 }
 
 Cat&	Cat::operator=( const Cat& other ) {
 	std::cout << "cat copied from '='" << std::endl;
-	*this = other;
+	this->type = other.type;
+	delete this->brain;
+	this->brain = new Brain(*other.brain);
 	return (*this);
 }
 
