@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:37:35 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/28 20:20:56 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/28 22:35:16 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,18 @@ T& max(T& a, T& b) {
 		return b;
 }
 
-int main() {
-	int a = 5;
-	int b = 10;
-
-	std::cout << "a: " << a << " | b: " << b << std::endl;
-	
-	std::cout << "swapping..." << std::endl;
-	swap(a, b);
-
-	std::cout << "a: " << a << " | b: " << b << std::endl;
-
-	std::cout << "min: " << min(a, b) << std::endl;
-	std::cout << "max: " << max(a, b) << std::endl;
-
-    return 0;
+int main( void ) {
+int a = 2;
+int b = 3;
+::swap( a, b );
+std::cout << "a = " << a << ", b = " << b << std::endl;
+std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+std::string c = "chaine1";
+std::string d = "chaine2";
+::swap(c, d);
+std::cout << "c = " << c << ", d = " << d << std::endl;
+std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+return 0;
 }
