@@ -15,9 +15,9 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 NAME = template
 
-SRCS = $(addprefix srcs/, iter.cpp )
+# SRCS = $(addprefix srcs/, iter.cpp )
 
-FILES = main.cpp $(SRCS)
+FILES = main.cpp
 
 OBJ = $(FILES:.cpp=.o)
 

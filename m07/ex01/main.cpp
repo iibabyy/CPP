@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:37:35 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/28 22:52:28 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/29 13:06:56 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void toUpperCase(std::string &str) {
 int main() {
     // Test avec un tableau d'entiers
     int intArray[] = {1, 2, 3, 4, 5};
-    std::size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
+    unsigned long intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
     
     std::cout << "Tableau d'entiers avant incrémentation : ";
     iter(intArray, intArrayLength, printInt);
     std::cout << std::endl;
 
-    iter(intArray, intArrayLength, incrementInt);
+    iter<int>(intArray, intArrayLength, incrementInt);
 
     std::cout << "Tableau d'entiers après incrémentation : ";
     iter(intArray, intArrayLength, printInt);
@@ -51,7 +51,7 @@ int main() {
 
     // Test avec un tableau de chaînes de caractères
     std::string strArray[] = {"hello", "world", "iter", "template"};
-    std::size_t strArrayLength = sizeof(strArray) / sizeof(strArray[0]);
+    unsigned long strArrayLength = sizeof(strArray) / sizeof(strArray[0]);
     
     std::cout << "Tableau de chaînes avant conversion en majuscules : ";
     iter(strArray, strArrayLength, printString);
