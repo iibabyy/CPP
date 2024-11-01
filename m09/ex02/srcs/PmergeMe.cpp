@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 00:09:25 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/31 14:42:27 by ibaby            ###   ########.fr       */
+/*   Created: 2024/10/31 14:51:02 by ibaby             #+#    #+#             */
+/*   Updated: 2024/10/31 15:12:42 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/RPN.hpp"
-#include <cstdlib>
-#include <exception>
-#include <iostream>
+#include "../includes/PmergeMe.hpp"
+#include <mutex>
+#include <vector>
+#include <algorithm>
 
-int	main(int ac, char **av) {
-	if (ac != 2) {
-		std::cerr << "format: <expression>" << std::endl;
-		return (EXIT_FAILURE);
+template<typename T>
+void	fill(T& container, int tab[], int size) {
+	for (int i = 0; i < size; i++) {
+		container.push_back(tab[i]);
 	}
+}
 
-	try {
-		std::cout << RPN(av[1]) << std::endl;
-	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
+std::vector<int>	merge(std::vector<int>& )
 
-	return (EXIT_SUCCESS);
+long long	PmergeVec(std::vector<int>& vec, int tab[], int size) {
+	fill(vec, tab, size);
+	
+	
 }

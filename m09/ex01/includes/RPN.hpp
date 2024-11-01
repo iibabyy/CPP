@@ -6,11 +6,15 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:08:05 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/31 00:08:39 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/10/31 14:39:44 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
+
+#include <string>
+
+int	RPN( std::string str );
 
 #endif
