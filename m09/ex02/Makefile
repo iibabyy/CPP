@@ -15,7 +15,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 NAME = PmergeMe
 
-SRCS = $(addprefix srcs/, PmergeMe.cpp )
+SRCS = $(addprefix srcs/, PmergeMe.cpp utils.cpp )
 
 FILES = main.cpp $(SRCS)
 

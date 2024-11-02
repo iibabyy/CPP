@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:44:36 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/31 14:35:24 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/11/02 17:16:40 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 #include <string>
 
 bool	checkInput(std::string line) {
+
+	if (std::count(line.begin(), line.end(), '.') > 1) {
+		std::cout << "Error: bad input => " << line << std::endl;
+		return (false);
+	} else if (std::count(line.begin(), line.end(), '|') != 1) {
+		std::cout << "Error: bad input => " << line << std::endl;
+		return (false);
+	}
+
 	for (int i = 0; line[i]; i++) {
 		if ((i >= 0 && i < 4) || i == 5 || i == 6 || i == 8 || i == 9) {
 			if (std::isdigit(line[i]) == false) {
@@ -43,7 +52,7 @@ bool	checkInput(std::string line) {
 		}
 		else if (i == 13) {
 			if (line[i] == '-') {
-				std::cout << "Error: not a positive number." << line << std::endl;
+				std::cout << "Error: not a positive number." << std::endl;
 				return (false);
 			}
 			else if (line[i] == '+' && isdigit(line[i + 1]) == false) {
@@ -55,8 +64,8 @@ bool	checkInput(std::string line) {
 				return (false);
 			}
 		}
-		else if (i > 12 && std::isdigit(line[i]) == false) {
-			std::cout << "Error: bad input => " << line << std::endl;
+		else if (i > 12 && std::isdigit(line[i]) == false && line[i] != '.') {
+			std::cout << "Error : bad input => " << line << std::endl;
 			return (false);
 		}
 	}
@@ -113,7 +122,7 @@ void	BitcoinExchange(char *path) {
 			continue ;
 		}
 
-		std::string	date_asked = line.substr(0, line.find("|"));
+		std::string	date_asked = line.substr(0, 10);
 
 		std::map<std::string, float>::iterator end = map.end();
 		std::map<std::string, float>::iterator date_target = map.begin();
@@ -128,7 +137,7 @@ void	BitcoinExchange(char *path) {
 		// std::cerr << "DBG: target: " << date_target->first << " | price: " << date_target->second << std::endl;
 		// std::cerr << "DBG: date_asked: " << date_asked << " | value asked :" << asked << std::endl;
 
-		std::cout << line << " => " << asked << " = " << date_target->second * asked << std::endl;
+		std::cout << date_asked << " => " << asked << " = " << date_target->second * asked << std::endl;
 
 	}
 
