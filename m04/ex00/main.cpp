@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:10:51 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/26 17:54:07 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/11/02 16:49:16 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int main()
 	std::cout << dog->getType() << " " << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
 	std::cout << wrongCat->getType() << " " << std::endl;
-	
-	cat->makeSound(); //will output the cat sound!
+
+	cat->makeSound();
 	dog->makeSound();
 	meta->makeSound();
 	wrongCat->makeSound();
 	wrongAnimal->makeSound();
+
 	delete meta;
 	delete dog;
 	delete cat;
 	delete wrongAnimal;
 	delete wrongCat;
+
 	return 0;
 }
