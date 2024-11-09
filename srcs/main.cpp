@@ -5,39 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 14:37:35 by ibaby             #+#    #+#             */
-/*   Updated: 2024/11/04 15:10:38 by ibaby            ###   ########.fr       */
+/*   Created: 2024/11/05 00:05:09 by madamou           #+#    #+#             */
+/*   Updated: 2024/11/08 20:34:40 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Span.hpp"
+#include "../includes/includes.hpp"
+#include "../includes/Server.hpp"
+#include "../includes/Parser.hpp"
 #include <exception>
-#include <iostream>
-#include <ostream>
 #include <vector>
 
-int main()
-{
-	Span sp = Span(20);
-	sp.addNumber(6);
-	sp.addNumber(9);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(11);
-	
-	sp.print();
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
-
-	std::vector<int> _long = std::vector<int>(1000, 15);
-	try {
-		sp.addRange< std::vector<int> >(_long.begin(), _long.end());
+int main(void) {
+	Server server;
+  std::vector<Server> servVec;
+  	try {
+		servVec = Pars::parse("configExample.conf");
 	} catch (std::exception &e) {
-		std::cout << "Error: " << e.what() << " !" << std::endl;
+		std::cout << "Error : " << e.what() << std::endl;
+		return 1;
 	}
-	sp.print();
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
-
+  std::cout << "PARSING OK!" << std::endl;
+  std::cout << "test post : " << servVec[0]._data->_port << std::endl;
+	server.signalHandle();
+	server.init();
+	server.run();
+	std::cout << "ok" << std::endl;
 	return 0;
 }

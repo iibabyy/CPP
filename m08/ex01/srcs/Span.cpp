@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 21:32:01 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/30 00:24:23 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:38:48 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ unsigned int	Span::shortestSpan( void ) {
 	std::sort(list.begin(), list.end());
 
 	unsigned int span = std::max(list[0], list[1]) - std::min(list[0], list[1]);
-
+	list.
 	for ( std::vector<int>::iterator it = list.begin();
 		it + 1 != list.end(); it++ ) {
 			if (static_cast<unsigned int>(*(it + 1) - *it) < span)
