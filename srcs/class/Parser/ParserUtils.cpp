@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:07:33 by itahri            #+#    #+#             */
-/*   Updated: 2024/11/08 21:00:36 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/11/10 18:10:55 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void Pars::addServName(Data* data, std::string name) {
 
 
 void Pars::addRootDir(Data* data, std::string path) {
+  if (path.find("/") != path.length() - 1)
+    path.push_back('/');
   if (!path.empty())
     data->_root = path;
 }
@@ -41,17 +43,34 @@ void Pars::addRootDir(Data* data, std::string path) {
 
 void Pars::addUpFoldDir(Data* data, std::string path) {
   if (!path.empty())
-    data->_index = path;
+    data->_uploadFolder = path;
 }
 
 
-void Pars::addAllowedMethodes(Data* data, std::string w) {
-  if (w.find("GET") != std::string::npos) 
-    data->_allowedMethods += GET_;
-  if (w.find("POST") != std::string::npos) 
-    data->_allowedMethods += POST_;
-  if (w.find("DELETE") != std::string::npos) 
-    data->_allowedMethods += DELETE_;
+void Pars::addAllowedMethodes(Data* data, std::string str) {
+	int	methods = 0;
+
+	if (str.find(";") != std::string::npos) {
+		str.erase(str.find(';'), 1);
+	}
+
+	if (str.find("GET") != std::string::npos) {
+		methods = methods | GET_;
+		str.erase(str.find("GET"), 3);
+	} if (str.find("POST") != std::string::npos) {
+		methods = methods | POST_;
+		str.erase(str.find("POST"), 4);
+	} if (str.find("DELETE") != std::string::npos) {
+		methods = methods | DELETE_;
+		str.erase(str.find("DELETE"), 6);
+	} if (str.find("OPTIONS") != std::string::npos) {
+		methods = methods | OPTIONS_;
+		str.erase(str.find("OPTIONS"), 7);
+	}
+
+	if (trim(str).empty() == false) // still words after deleting valids methods 
+		throw std::invalid_argument("invalid methods");
+	data->_allowedMethods = methods;
 }
 
 

@@ -6,12 +6,14 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:50:51 by itahri            #+#    #+#             */
-/*   Updated: 2024/11/08 21:06:45 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/11/10 19:50:06 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/Parser.hpp"
 #include "../../../includes/Server.hpp"
+#include "../../../includes/Location.hpp"
+#include <algorithm>
 #include <cctype>
 #include <cstdlib>
 #include <exception>
@@ -40,6 +42,8 @@ void normalizeLine(std::string &line) {
 	  line.replace(pos, 1, tabReplacement);
 	  pos += tabReplacement.length();
 	}
+  if (line.find(";") != std::string::npos)
+    line.erase(line.find(';'), 1);
 	trimn(line);
 }
 
@@ -61,7 +65,7 @@ void	addLocationLine(std::string &line, Location& location) {
 	if (line.empty() || trim(line).empty())
 		return ;
 	else if (line.find(' ') == std::string::npos)
-		throw std::invalid_argument("invalid line: " + line);
+		throw std::invalid_argument("invalid line 2: " + line);
 	else if (line.find(";") == std::string::npos)
 		throw std::invalid_argument("`;' expected");
 
@@ -87,8 +91,24 @@ void	addLocationLine(std::string &line, Location& location) {
 		location.cgi(value);
 	} else if (key == "redirect") {	//			REDIRECT
 		location.redirect(value);
-	} else if (key == "allowed_methods") {	//			ALLOWEDMETHODS
-		location.allowedMethods(value);
+	} else if (key == "allowed_methods") {	//			ALLOWED METHODS
+		int methods = 0;
+		if (value.find("GET") != std::string::npos) {
+			methods = methods | GET_;
+		} if (value.find("POST") != std::string::npos) {
+			methods = methods | POST_;
+		} if (value.find("DELETE") != std::string::npos) {
+			methods = methods | DELETE_;
+		} if (value.find("OPTIONS") != std::string::npos) {
+			methods = methods | OPTIONS_;
+		} 
+		
+		if (methods == 0) {	// no methods found
+			throw std::invalid_argument("GET, DELETE or POST expected");
+		} else {
+			location.allowedMethods(methods);
+		}
+			
 	} else if (key == "uploads_folder") {	//			UPLOADS_FOLDER
 		location.uploadFolder(value);
 	} else if (key == "client_max_body_size") {	//			CLIENT_MAX_BODY_SIZE
@@ -121,10 +141,10 @@ void	handleLocation(std::string &line, std::ifstream &configFile, Data& data, in
 	}
 
 	Location	location;
-	std::string	location_path = line.substr(
-		line.find_first_not_of("\t")
-	);
-	location_path = location_path.erase(location_path.find(" "));
+	std::string	location_path = trim(line.substr(
+		line.find_first_of(" ")
+	));
+	// location_path = location_path.erase(location_path.find(" "));
 	location.location(location_path);
 		
 	std::getline(configFile, line);
@@ -155,6 +175,7 @@ void Pars::handleLine(std::string &line, std::ifstream& configFile, Data* data, 
 
 	std::map<std::string, void (Pars::*)(Data*, std::string)> functionMap;
 
+  (void)lineNumber;
 
 	functionMap["listen"] = &Pars::addPort;
 	functionMap["server_names"] = &Pars::addServName;
@@ -168,12 +189,12 @@ void Pars::handleLine(std::string &line, std::ifstream& configFile, Data* data, 
 	functionMap["index"] = &Pars::addIndex;
 
 	std::string	type;
-	
+
 	normalizeLine(line);
 	type = line.substr(0, line.find(' '));
-	std::cout << "{" << lineNumber << ": " << type << "}" << "'->";
-	debugPrint(line);
-	std::cout << "<-'" << std::endl;
+	// std::cout << "{" << lineNumber << ": " << type << "}" << "'->";
+	// debugPrint(line);
+	// std::cout << "<-'" << std::endl;
 
 	if (type == "location") {
 		handleLocation(line, configFile, *data, lineNumber);
@@ -185,7 +206,8 @@ void Pars::handleLine(std::string &line, std::ifstream& configFile, Data* data, 
 		throw std::invalid_argument("unknow keyword: " + trim(type));
 	}
 	Pars parsInstance; //for now is the only method to do what i want i will change this soon
-	(parsInstance.*functionMap[trim(type)])(data, line.substr(line.find(" "), line.size()));
+	(parsInstance.*functionMap[trim(type)])(data, trim(line.substr(line.find(" "))));
+	std::cout << trim(type) << ": " << line.substr(line.find(" ")) << std::endl;;
 }
 
 //for each server configuration check synthax and give each line to handleLine()
@@ -195,11 +217,11 @@ void	Pars::parseServer(Server &serv, std::ifstream& configFile, int &lineNumber)
 
 	std::getline(configFile, line);
 	if (line != "{") {
-		throw std::invalid_argument("invalid line");
+		throw std::invalid_argument("invalid line 1");
 	}
-	
+
 	++lineNumber;
-	std::cout << lineNumber << std::endl;
+	// std::cout << lineNumber << std::endl;
 
 	for (;std::getline(configFile, line); lineNumber++) {
 	//   std::cout << "debug : " << line << std::endl;
@@ -224,6 +246,7 @@ std::vector<Server> Pars::parseConfigFile(std::string configFilePath) {
 	for (int lineNumber = 0;std::getline(configFile, line); lineNumber++) {
 	  if (line.empty() || trim(line).empty()) continue;
 	  if (trim(line) == "server") {
+	    std::cout << "---------------------[NEW SERVER ADDED]---------------------" << std::endl;
 	    Server	newServ;
 	    try {
 	      parseServer(newServ, configFile, lineNumber);
@@ -231,14 +254,16 @@ std::vector<Server> Pars::parseConfigFile(std::string configFilePath) {
 	      throw std::invalid_argument(e.what());
 	    }
 	    servVec.push_back(newServ);
-	    std::cout << "---------------------[NEW SERVER ADDED]---------------------" << std::endl;
 	  }
 	}
 	return servVec;
 }
 
-
 std::vector<Server> Pars::parse(std::string path) {
 	return parseConfigFile(path);
 }
+
+
+
+
 
