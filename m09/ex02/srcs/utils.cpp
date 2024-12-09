@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 14:47:24 by ibaby             #+#    #+#             */
-/*   Updated: 2024/11/01 16:38:40 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/12/09 14:33:11 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@
 #include <cstring>
 #include <ctime>
 #include <iostream>
-#include <list>
+#include <deque>
 #include <ostream>
 #include <vector>
 
-void	printTimes(int size, double vecTime, double lstTime, double stdVecTime) {
+void	printTimes(int size, double vecTime, double DequeTime, double stdVecTime) {
 	std::cout << std::fixed << "Time to process a range of " << size << " elements with std::vector                 : " << vecTime << std::endl;
-	std::cout << std::fixed << "Time to process a range of " << size << " elements with std::list                   : " << lstTime << std::endl;
+	std::cout << std::fixed << "Time to process a range of " << size << " elements with std::deque                   : " << DequeTime << std::endl;
 	std::cout << std::fixed << "Time for std::sort() to process a range of " << size << " elements with std::vector : " << stdVecTime << std::endl;
 }
 
-void	startSorts(std::vector<int> vec, std::list<int> list) {
+void	startSorts(std::vector<int> vec, std::deque<int> deque) {
 	std::cout << "Before: " << vec << std::endl;
-	// std::cout << "Before: " << list << std::endl;
+	// std::cout << "Before: " << deque << std::endl;
 
 	std::clock_t	start, end;
-	double			vecTime, lstTime, stdVecTime;
+	double			vecTime, DequeTime, stdVecTime;
 
 	start = std::clock();
 	std::sort(vec.begin(), vec.end());
@@ -46,14 +46,14 @@ void	startSorts(std::vector<int> vec, std::list<int> list) {
 
 
 	start = std::clock();
-	PmergeLst(list);
+	PmergeDeque(deque);
 	end = std::clock();
-	lstTime = double(end - start) / CLOCKS_PER_SEC;
+	DequeTime = double(end - start) / CLOCKS_PER_SEC;
 
 	std::cout << "After:  " << vec << std::endl;
-	// std::cout << "After:  " << list << std::endl;
+	// std::cout << "After:  " << deque << std::endl;
 
-	printTimes(vec.size(), vecTime, lstTime, stdVecTime);
+	printTimes(vec.size(), vecTime, DequeTime, stdVecTime);
 
 }
 
@@ -101,7 +101,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<int>& tab) {
 			os << *it << " ";
 			
 		}
-		if (i >= 4) {
+		if (i >= 4) {		// comment this to print all the numbers
 			std::cout << " [...]";
 			break ;
 		}
@@ -110,15 +110,15 @@ std::ostream& operator<<(std::ostream& os, const std::vector<int>& tab) {
 	return (os);
 }
 
-std::ostream& operator<<(std::ostream& os, const std::list<int>& tab) {
-	std::list<int>::const_iterator ite = tab.end();
+std::ostream& operator<<(std::ostream& os, const std::deque<int>& tab) {
+	std::deque<int>::const_iterator ite = tab.end();
 
 	if (tab.empty())
 		return (os);
 
 	int i = 0;
 		
-	for (std::list<int>::const_iterator it = tab.begin(); it != ite; it++) {
+	for (std::deque<int>::const_iterator it = tab.begin(); it != ite; it++) {
 		os << *it << " ";
 		if (i >= 4) {
 			std::cout << " [...]";

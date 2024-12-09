@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:09:25 by ibaby             #+#    #+#             */
-/*   Updated: 2024/11/01 15:44:19 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/12/09 14:27:08 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	main(int ac, char **av) {
 		return (EXIT_FAILURE);
 	}
 
-	std::list<int> list(vec.begin(), vec.end());
+	std::deque<int> deque(vec.begin(), vec.end());
 
 
-	startSorts(vec, list);
+	startSorts(vec, deque);
 
 
 

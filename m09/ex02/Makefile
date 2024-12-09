@@ -11,7 +11,7 @@ END= 	$(shell tput -Txterm sgr0)
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98 -g3
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = PmergeMe
 

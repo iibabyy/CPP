@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:51:02 by ibaby             #+#    #+#             */
-/*   Updated: 2024/11/02 13:56:08 by ibaby            ###   ########.fr       */
+/*   Updated: 2024/12/09 14:28:53 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,32 @@ std::vector<int>	PmergeVec(std::vector<int>& tab) {
 
 	// insert the smallest numbers of each pairs (binary search)
 
-	end = small.end();
 
-	for (std::vector<int>::iterator it = small.begin(); it != end; it++) {
-		pos = std::lower_bound(result.begin(), result.end(), *it);
+	std::vector<int> jacobsthal;
+	jacobsthalSequence< std::vector<int> >(jacobsthal, small.size());
 
-		result.insert(pos, *it);
+	end = jacobsthal.end();
+
+	for (std::vector<int>::iterator it = jacobsthal.begin(); it != end; it++) {
+		int	num = small.at(*it);
+
+		pos = std::lower_bound(result.begin(), result.end(), num);
+		result.insert(pos, num);
 	}
 
 	return (result);
 }
 
-std::list<int>	PmergeLst(std::list<int>& tab) {
+std::deque<int>	PmergeDeque(std::deque<int>& tab) {
 
 	/* create size/2 pairs */
 
 	size_t	pairs = 0;
 
-	std::list<int> result, big, small;
-	std::list<int>::iterator pos, end = tab.end();
+	std::deque<int> result, big, small;
+	std::deque<int>::iterator pos, end = tab.end();
 
-	for (std::list<int>::iterator it = tab.begin(); it != end; it++) {
+	for (std::deque<int>::iterator it = tab.begin(); it != end; it++) {
 		int	n1 = *it;
 		++pairs;
 		++it;
@@ -99,17 +104,24 @@ std::list<int>	PmergeLst(std::list<int>& tab) {
 		return (result);
 	}
 
-	/* else : new lst = PmergeLst(bigger number of each pairs)  */
-	result = PmergeLst(big);
+	/* else : new Deque = PmergeDeque(bigger number of each pairs)  */
+	result = PmergeDeque(big);
 
 	/* insert the smallest numbers of each pairs (binary search)  */
 
-	end = small.end();
 
-	for (std::list<int>::iterator it = small.begin(); it != end; it++) {
-		pos = std::lower_bound(result.begin(), result.end(), *it);
+	std::deque<int> jacobsthal;
+	
+	end = jacobsthal.end();
 
-		result.insert(pos, *it);
+	jacobsthalSequence< std::deque<int> >(jacobsthal, small.size());
+
+
+	for (std::deque<int>::iterator it = jacobsthal.begin(); it != end; it++) {
+		int	num = small.at(*it);
+
+		pos = std::lower_bound(result.begin(), result.end(), num);
+		result.insert(pos, num);
 	}
 
 	return (result);
