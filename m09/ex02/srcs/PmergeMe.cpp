@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:51:02 by ibaby             #+#    #+#             */
-/*   Updated: 2024/12/09 14:28:53 by ibaby            ###   ########.fr       */
+/*   Updated: 2025/01/04 17:04:39 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ std::deque<int>	PmergeDeque(std::deque<int>& tab) {
 	end = jacobsthal.end();
 
 	jacobsthalSequence< std::deque<int> >(jacobsthal, small.size());
-
 
 	for (std::deque<int>::iterator it = jacobsthal.begin(); it != end; it++) {
 		int	num = small.at(*it);
