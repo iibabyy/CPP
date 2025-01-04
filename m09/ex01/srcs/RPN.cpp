@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 00:10:17 by ibaby             #+#    #+#             */
-/*   Updated: 2024/10/31 14:48:12 by ibaby            ###   ########.fr       */
+/*   Updated: 2025/01/04 16:42:55 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	execOperator(std::stack<int>& stack, char c) {
 		n1 = getTop(stack);
 		if (stack.empty())
 			throw std::invalid_argument("Error");
+		else if (n1 == 0)
+			throw std::invalid_argument("Error: division by zero");
 
 		n2 = getTop(stack);
 		stack.push(n2 / n1);
