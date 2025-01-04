@@ -6,7 +6,7 @@
 /*   By: ibaby <ibaby@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:44:36 by ibaby             #+#    #+#             */
-/*   Updated: 2024/11/02 17:16:40 by ibaby            ###   ########.fr       */
+/*   Updated: 2025/01/04 16:40:27 by ibaby            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,51 @@
 #include <cstring>
 #include <exception>
 #include <fstream>
-#include <iomanip>
 #include <iostream>
 #include <string>
+
+bool	is_valid_char_by_index(std::string line, int i) {
+	if ((i >= 0 && i < 4) || i == 5 || i == 6 || i == 8 || i == 9) {
+		if (std::isdigit(line[i]) == false) {
+			std::cout << "Error: bad input => " << line << std::endl;
+			return (false);
+		}
+	}
+	else if (i == 4 || i == 7) {
+		if (line[i] != '-') {
+			std::cout << "Error: bad input => " << line << std::endl;
+			return (false);
+		}
+	}
+	else if (i == 11 && line[i] != '|') {
+		std::cout << "Error: bad input => " << line << std::endl;
+		return (false);
+	}
+	else if ((i == 10 || i == 12) && line[i] != ' ') {
+		std::cout << "Error: bad input => " << line << std::endl;
+		return (false);
+	}
+	else if (i == 13) {
+		if (line[i] == '-') {
+			std::cout << "Error: not a positive number." << std::endl;
+			return (false);
+		}
+		else if (line[i] == '+' && isdigit(line[i + 1]) == false) {
+			std::cout << "Error: bad input => " << line << std::endl;
+			return (false);
+		}
+		else if (std::isdigit(line[i]) == false) {
+			std::cout << "Error: bad input => " << line << std::endl;
+			return (false);
+		}
+	}
+	else if (i > 12 && std::isdigit(line[i]) == false && line[i] != '.') {
+		std::cout << "Error : bad input => " << line << std::endl;
+		return (false);
+	}
+
+	return true;
+}
 
 bool	checkInput(std::string line) {
 
@@ -30,44 +72,29 @@ bool	checkInput(std::string line) {
 	}
 
 	for (int i = 0; line[i]; i++) {
-		if ((i >= 0 && i < 4) || i == 5 || i == 6 || i == 8 || i == 9) {
-			if (std::isdigit(line[i]) == false) {
-				std::cout << "Error: bad input => " << line << std::endl;
-				return (false);
+		
+		if (is_valid_char_by_index(line, i) == false) { return false; }
+		
+		if (i == 0) {	// year
+			int year = std::atol(&line.c_str()[i]);
+			if (year < 1000 || year >= 3000) {
+				std::cout << "Error : bad input => " << line << std::endl;
+				return false;
+			}
+		} else if (i == 5) {	// month
+			int month = std::atol(&line.c_str()[i]);
+			if (month < 1 || month > 12) {
+				std::cout << "Error : bad input => " << line << std::endl;
+				return false;
+			}
+		} else if (i == 8) {	// day
+			int day = std::atol(&line.c_str()[i]);
+			if (day < 1 || day > 31) {
+				std::cout << "Error : bad input => " << line << std::endl;
+				return false;
 			}
 		}
-		else if (i == 4 || i == 7) {
-			if (line[i] != '-') {
-				std::cout << "Error: bad input => " << line << std::endl;
-				return (false);
-			}
-		}
-		else if (i == 11 && line[i] != '|') {
-			std::cout << "Error: bad input => " << line << std::endl;
-			return (false);
-		}
-		else if ((i == 10 || i == 12) && line[i] != ' ') {
-			std::cout << "Error: bad input => " << line << std::endl;
-			return (false);
-		}
-		else if (i == 13) {
-			if (line[i] == '-') {
-				std::cout << "Error: not a positive number." << std::endl;
-				return (false);
-			}
-			else if (line[i] == '+' && isdigit(line[i + 1]) == false) {
-				std::cout << "Error: bad input => " << line << std::endl;
-				return (false);
-			}
-			else if (std::isdigit(line[i]) == false) {
-				std::cout << "Error: bad input => " << line << std::endl;
-				return (false);
-			}
-		}
-		else if (i > 12 && std::isdigit(line[i]) == false && line[i] != '.') {
-			std::cout << "Error : bad input => " << line << std::endl;
-			return (false);
-		}
+
 	}
 	return (true);
 }
@@ -76,8 +103,8 @@ void	BitcoinExchange(char *path) {
 
 	char *tmp = std::strrchr(path, '.');
 
-	if (tmp == NULL || std::strcmp(tmp, ".txt") != 0) {
-		std::cerr << path <<" is not '.txt'" << std::endl;
+	if (tmp == NULL || std::strcmp(tmp, ".csv") != 0) {
+		std::cerr << path <<" is not '.csv'" << std::endl;
 		return ;
 	}
 
